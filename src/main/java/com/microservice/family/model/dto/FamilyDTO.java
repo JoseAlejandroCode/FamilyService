@@ -1,6 +1,14 @@
 package com.microservice.family.model.dto;
 
-import java.io.Serializable;
+public class FamilyDTO extends PersonDTO {
 
-public class FamilyDTO implements Serializable {
+  private String relationship;
+
+  public String getRelationship() {
+    return relationship;
+  }
+
+  public void setRelationship(String relationship) {
+    this.relationship = relationship;
+  }
 }
