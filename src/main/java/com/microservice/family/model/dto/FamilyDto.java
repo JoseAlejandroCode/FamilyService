@@ -1,6 +1,6 @@
 package com.microservice.family.model.dto;
 
-public class FamilyDTO extends PersonDTO {
+public class FamilyDto extends PersonDto {
 
   private String relationship;
 
