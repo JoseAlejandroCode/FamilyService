@@ -1,6 +1,7 @@
 package com.microservice.family.service.impl;
 
-import com.microservice.family.model.document.Family;
+import com.microservice.family.component.FamilyConverter;
+import com.microservice.family.model.dto.FamilyDto;
 import com.microservice.family.respository.FamilyRepository;
 import com.microservice.family.service.FamilyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,35 +15,41 @@ public class FamilyServiceImpl implements FamilyService {
   @Autowired
   private FamilyRepository familyRepository;
 
+  @Autowired
+  private FamilyConverter familyConverter;
+
   @Override
-  public Flux<Family> findAll() {
-    return familyRepository.findAll();
+  public Flux<FamilyDto> findAll() {
+    return familyRepository.findAll()
+            .flatMap(family -> Mono.just(familyConverter.convertToDto(family)));
   }
 
   @Override
-  public Mono<Family> findById(String id) {
-    return familyRepository.findById(id);
+  public Mono<FamilyDto> findById(String id) {
+    return familyRepository.findById(id)
+            .flatMap(family -> Mono.just(familyConverter.convertToDto(family)));
   }
 
   @Override
-  public Mono<Family> create(Family family) {
-    return familyRepository.save(family);
+  public Mono<FamilyDto> create(FamilyDto family) {
+    return familyRepository.save(familyConverter.convertToDocument(family))
+            .flatMap(f -> Mono.just(familyConverter.convertToDto(f)));
   }
 
   @Override
-  public Mono<Family> update(Family family, String id) {
+  public Mono<FamilyDto> update(FamilyDto family, String id) {
     return findById(id).flatMap(f -> {
       f.setFullName(family.getFullName());
       f.setBirthdate(family.getBirthdate());
       f.setGender(family.getGender());
       f.setTypeDocument(family.getTypeDocument());
       f.setNumberDocument(family.getNumberDocument());
-      return familyRepository.save(f);
-    });
+      return familyRepository.save(familyConverter.convertToDocument(f));
+    }).flatMap(f1 -> Mono.just(familyConverter.convertToDto(f1)));
   }
 
   @Override
   public Mono<Void> delete(String id) {
-    return findById(id).flatMap(f -> familyRepository.delete(f));
+    return findById(id).flatMap(f -> familyRepository.delete(familyConverter.convertToDocument(f)));
   }
 }

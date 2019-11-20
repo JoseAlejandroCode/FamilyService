@@ -20,37 +20,29 @@ public class FamilyController {
   @Autowired
   private FamilyService familyService;
 
-  @Autowired
-  private FamilyConverter familyConverter;
-
   @GetMapping
   public Mono<ResponseEntity<Flux<FamilyDto>>> listar(){
     return Mono.just(ResponseEntity
-            .ok().contentType(MediaType.APPLICATION_JSON).body(familyService.findAll().flatMap(
-                    family -> Mono.just(familyConverter.convertToDto(family))
-            )));
+            .ok().contentType(MediaType.APPLICATION_JSON).body(familyService.findAll()));
   }
 
   @GetMapping("/{id}")
   public Mono<ResponseEntity<FamilyDto>> ver(@PathVariable String id){
     return familyService.findById(id)
-            .flatMap(family -> Mono.just(familyConverter.convertToDto(family)))
             .map(family -> ResponseEntity
                     .ok().contentType(MediaType.APPLICATION_JSON).body(family));
   }
 
   @PostMapping
   public  Mono<ResponseEntity<FamilyDto>> registrar(@RequestBody FamilyDto family){
-    return familyService.create(familyConverter.convertToDocument(family))
-            .flatMap(f -> Mono.just(familyConverter.convertToDto(f)))
+    return familyService.create(family)
             .map(f -> ResponseEntity
                     .created(URI.create("/api/family")).contentType(MediaType.APPLICATION_JSON).body(f));
   }
 
   @PutMapping("/{id}")
   public Mono<ResponseEntity<FamilyDto>> actulizar(@RequestBody FamilyDto family, @PathVariable String id){
-    return familyService.update(familyConverter.convertToDocument(family), id)
-            .flatMap(f -> Mono.just(familyConverter.convertToDto(f)))
+    return familyService.update(family, id)
             .map(f -> ResponseEntity
                     .created(URI.create("/api/family")).contentType(MediaType.APPLICATION_JSON).body(f));
   }

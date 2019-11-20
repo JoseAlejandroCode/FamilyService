@@ -1,13 +1,13 @@
 package com.microservice.family.service;
 
-import com.microservice.family.model.document.Family;
+import com.microservice.family.model.dto.FamilyDto;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface FamilyService {
-  Flux<Family> findAll();
-  Mono<Family> findById(String id);
-  Mono<Family> create(Family family);
-  Mono<Family> update(Family family, String id);
+  Flux<FamilyDto> findAll();
+  Mono<FamilyDto> findById(String id);
+  Mono<FamilyDto> create(FamilyDto family);
+  Mono<FamilyDto> update(FamilyDto family, String id);
   Mono<Void> delete(String id);
 }
