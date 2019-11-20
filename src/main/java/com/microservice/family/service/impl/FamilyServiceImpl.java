@@ -31,6 +31,12 @@ public class FamilyServiceImpl implements FamilyService {
   }
 
   @Override
+  public Flux<FamilyDto> findByIdStudent(String idStudent) {
+    return familyRepository.findByIdStudent(idStudent)
+            .flatMap(family -> Mono.just(familyConverter.convertToDto(family)));
+  }
+
+  @Override
   public Mono<FamilyDto> create(FamilyDto family) {
     return familyRepository.save(familyConverter.convertToDocument(family))
             .flatMap(f -> Mono.just(familyConverter.convertToDto(f)));
