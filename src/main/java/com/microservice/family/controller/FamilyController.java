@@ -27,14 +27,14 @@ public class FamilyController {
   public Mono<ResponseEntity<Flux<FamilyDto>>> listar(){
     return Mono.just(ResponseEntity
             .ok().contentType(MediaType.APPLICATION_JSON).body(familyService.findAll().flatMap(
-                    family -> Mono.just(familyConverter.converToDto(family))
+                    family -> Mono.just(familyConverter.convertToDto(family))
             )));
   }
 
   @GetMapping("/{id}")
   public Mono<ResponseEntity<FamilyDto>> ver(@PathVariable String id){
     return familyService.findById(id)
-            .flatMap(family -> Mono.just(familyConverter.converToDto(family)))
+            .flatMap(family -> Mono.just(familyConverter.convertToDto(family)))
             .map(family -> ResponseEntity
                     .ok().contentType(MediaType.APPLICATION_JSON).body(family));
   }
@@ -42,7 +42,7 @@ public class FamilyController {
   @PostMapping
   public  Mono<ResponseEntity<FamilyDto>> registrar(@RequestBody FamilyDto family){
     return familyService.create(familyConverter.convertToDocument(family))
-            .flatMap(f -> Mono.just(familyConverter.converToDto(f)))
+            .flatMap(f -> Mono.just(familyConverter.convertToDto(f)))
             .map(f -> ResponseEntity
                     .created(URI.create("/api/family")).contentType(MediaType.APPLICATION_JSON).body(f));
   }
@@ -50,7 +50,7 @@ public class FamilyController {
   @PutMapping("/{id}")
   public Mono<ResponseEntity<FamilyDto>> actulizar(@RequestBody FamilyDto family, @PathVariable String id){
     return familyService.update(familyConverter.convertToDocument(family), id)
-            .flatMap(f -> Mono.just(familyConverter.converToDto(f)))
+            .flatMap(f -> Mono.just(familyConverter.convertToDto(f)))
             .map(f -> ResponseEntity
                     .created(URI.create("/api/family")).contentType(MediaType.APPLICATION_JSON).body(f));
   }
