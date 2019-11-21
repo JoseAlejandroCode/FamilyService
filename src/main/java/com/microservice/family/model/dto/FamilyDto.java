@@ -3,7 +3,7 @@ package com.microservice.family.model.dto;
 public class FamilyDto extends PersonDto {
 
   private String idStudent;
-  private String relationship;
+  private RelationshipDto relationship;
 
   public String getIdStudent() {
     return idStudent;
@@ -13,11 +13,11 @@ public class FamilyDto extends PersonDto {
     this.idStudent = idStudent;
   }
 
-  public String getRelationship() {
+  public RelationshipDto getRelationship() {
     return relationship;
   }
 
-  public void setRelationship(String relationship) {
+  public void setRelationship(RelationshipDto relationship) {
     this.relationship = relationship;
   }
 }

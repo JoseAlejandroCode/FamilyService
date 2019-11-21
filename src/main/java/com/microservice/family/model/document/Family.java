@@ -15,19 +15,19 @@ public class Family {
   private String numberDocument;
   private Boolean gender;
   private Date birthdate;
-  private String relationship;
+  private String idRelationship;
   private String idStudent;
 
   public Family() {
   }
 
-  public Family(String fullName, String typeDocument, String numberDocument, Boolean gender, Date birthdate, String relationship) {
+  public Family(String fullName, String typeDocument, String numberDocument, Boolean gender, Date birthdate, String idRelationship) {
     this.fullName = fullName;
     this.typeDocument = typeDocument;
     this.numberDocument = numberDocument;
     this.gender = gender;
     this.birthdate = birthdate;
-    this.relationship = relationship;
+    this.idRelationship = idRelationship;
   }
 
   public String getId() {
@@ -78,12 +78,12 @@ public class Family {
     this.birthdate = birthdate;
   }
 
-  public String getRelationship() {
-    return relationship;
+  public String getIdRelationship() {
+    return idRelationship;
   }
 
-  public void setRelationship(String relationship) {
-    this.relationship = relationship;
+  public void setIdRelationship(String idRelationship) {
+    this.idRelationship = idRelationship;
   }
 
   public String getIdStudent() {

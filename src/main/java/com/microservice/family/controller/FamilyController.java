@@ -2,6 +2,7 @@ package com.microservice.family.controller;
 
 import com.microservice.family.component.FamilyConverter;
 import com.microservice.family.model.dto.FamilyDto;
+import com.microservice.family.model.dto.RelationshipDto;
 import com.microservice.family.service.FamilyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -57,6 +58,18 @@ public class FamilyController {
   public Mono<ResponseEntity<Void>> delete(@PathVariable String id){
     return familyService.delete(id)
             .flatMap(p -> Mono.just(new ResponseEntity<Void>(HttpStatus.NO_CONTENT)));
+  }
+
+  @GetMapping("/relationship")
+  public Mono<ResponseEntity<Flux<RelationshipDto>>> findAllRelationships(){
+    return Mono.just(ResponseEntity.ok()
+            .contentType(MediaType.APPLICATION_JSON).body(familyService.findAllRelationship()));
+  }
+
+  @PostMapping("/relationship")
+  public Mono<ResponseEntity<RelationshipDto>> createRelationships(@RequestBody RelationshipDto relationship){
+    return familyService.createRelationship(relationship).map(r -> ResponseEntity
+            .created(URI.create("/api/family/relationship")).contentType(MediaType.APPLICATION_JSON).body(r));
   }
 
 }

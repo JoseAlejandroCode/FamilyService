@@ -14,7 +14,6 @@ public class FamilyConverter {
     familyDto.setNumberDocument(family.getNumberDocument());
     familyDto.setGender(family.getGender());
     familyDto.setBirthdate(family.getBirthdate());
-    familyDto.setRelationship(family.getRelationship());
     familyDto.setIdStudent(family.getIdStudent());
     return familyDto;
   }
@@ -27,7 +26,7 @@ public class FamilyConverter {
     family.setNumberDocument(familyDto.getNumberDocument());
     family.setGender(familyDto.getGender());
     family.setBirthdate(familyDto.getBirthdate());
-    family.setRelationship(familyDto.getRelationship());
+    family.setIdRelationship(familyDto.getRelationship().getId());
     family.setIdStudent(familyDto.getIdStudent());
     return family;
   }
