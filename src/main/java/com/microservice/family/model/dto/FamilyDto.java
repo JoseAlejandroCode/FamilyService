@@ -1,8 +1,11 @@
 package com.microservice.family.model.dto;
 
+import javax.validation.constraints.NotEmpty;
+
 public class FamilyDto extends PersonDto {
 
   private String idStudent;
+  @NotEmpty
   private String relationship;
 
   public String getIdStudent() {
