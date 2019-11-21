@@ -34,10 +34,9 @@ public class FamilyController {
   }
 
   @GetMapping("/student/{idStudent}")
-  public Flux<ResponseEntity<FamilyDto>> findById(@PathVariable String idStudent){
-    return familyService.findByIdStudent(idStudent)
-            .map(family -> ResponseEntity
-                    .ok().contentType(MediaType.APPLICATION_JSON).body(family));
+  public Mono<ResponseEntity<Flux<FamilyDto>>> findById(@PathVariable String idStudent){
+    return Mono.just(ResponseEntity
+            .ok().contentType(MediaType.APPLICATION_JSON).body(familyService.findByIdStudent(idStudent)));
   }
 
   @PostMapping
