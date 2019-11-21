@@ -56,6 +56,14 @@ public class FamilyServiceImpl implements FamilyService {
 
   @Override
   public Mono<Void> delete(String id) {
-    return findById(id).flatMap(f -> familyRepository.delete(familyConverter.convertToDocument(f)));
+    return findById(id)
+            .flatMap(f -> familyRepository.delete(familyConverter.convertToDocument(f)));
+  }
+
+  @Override
+  public Mono<Void> deleteByIdStudent(String idStudent) {
+    return findByIdStudent(idStudent)
+            .flatMap(f -> delete(f.getId()))
+            .next();
   }
 }
