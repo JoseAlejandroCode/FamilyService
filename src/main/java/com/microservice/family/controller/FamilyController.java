@@ -58,15 +58,12 @@ public class FamilyController {
   public Mono<ResponseEntity<Void>> delete(@PathVariable String id){
     return familyService.delete(id)
             .flatMap(p -> Mono.just(new ResponseEntity<Void>(HttpStatus.NO_CONTENT)));
-<<<<<<< HEAD
-=======
   }
 
   @DeleteMapping("/student/{idStudent}")
   public Mono<ResponseEntity<Void>> deleteByStudent(@PathVariable String idStudent){
     return familyService.deleteByIdStudent(idStudent)
             .flatMap(p -> Mono.just(new ResponseEntity<Void>(HttpStatus.NO_CONTENT)));
->>>>>>> d6c07b5862d5876cf1a3ea6267e2125ca3d47794
   }
 
 }
