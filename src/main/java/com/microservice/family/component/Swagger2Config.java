@@ -24,7 +24,7 @@ public class Swagger2Config {
             .select()
             .apis(RequestHandlerSelectors
                     .basePackage("com.microservice.family.controller"))
-            .paths(PathSelectors.ant("/.*"))
+            .paths(PathSelectors.regex("/api/family.*"))
             .build()
             .genericModelSubstitutes(Mono.class, Flux.class, Optional.class)
             .apiInfo(apiEndPointsInfo());
