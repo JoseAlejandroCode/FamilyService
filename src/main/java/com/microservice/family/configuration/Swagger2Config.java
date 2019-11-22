@@ -1,4 +1,4 @@
-package com.microservice.family.component;
+package com.microservice.family.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
