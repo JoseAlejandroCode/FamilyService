@@ -2,7 +2,10 @@ package com.microservice.family.model.document;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Document(collection = "family")
@@ -10,12 +13,21 @@ public class Family {
 
   @Id
   private String id;
+  @NotEmpty
   private String fullName;
+  @NotEmpty
   private String typeDocument;
+  @NotEmpty
   private String numberDocument;
+  @NotNull
   private Boolean gender;
+  @NotNull
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
   private Date birthdate;
+  @NotEmpty
   private String relationship;
+  @NotEmpty
+  @NotNull
   private String idStudent;
 
   public Family() {

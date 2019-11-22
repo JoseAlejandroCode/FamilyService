@@ -11,4 +11,5 @@ public interface FamilyService {
   Mono<FamilyDto> create(FamilyDto family);
   Mono<FamilyDto> update(FamilyDto family, String id);
   Mono<Void> delete(String id);
+  Mono<Void> deleteByIdStudent(String idStudent);
 }
