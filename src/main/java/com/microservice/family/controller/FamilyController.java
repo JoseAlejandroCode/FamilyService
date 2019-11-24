@@ -38,12 +38,12 @@ public class FamilyController {
                     .ok().contentType(MediaType.APPLICATION_JSON).body(family));
   }
 
-  @ApiOperation(value = "View a list of available family by id student", response = FamilyDto.class)
-  @GetMapping("/student/{idStudent}")
-  public Mono<ResponseEntity<Flux<FamilyDto>>> findByIdStudent(@PathVariable String idStudent){
+  @ApiOperation(value = "View a list of available family by id partner", response = FamilyDto.class)
+  @GetMapping("/partner/{idPartner}")
+  public Mono<ResponseEntity<Flux<FamilyDto>>> findByIdPartner(@PathVariable String idPartner){
 
     return Mono.just(ResponseEntity.ok()
-            .contentType(MediaType.APPLICATION_JSON).body(familyService.findByIdStudent(idStudent)));
+            .contentType(MediaType.APPLICATION_JSON).body(familyService.findByIdPartner(idPartner)));
   }
 
   @ApiOperation(value = "Save a family", response = FamilyDto.class)
@@ -69,10 +69,10 @@ public class FamilyController {
             .flatMap(p -> Mono.just(new ResponseEntity<Void>(HttpStatus.NO_CONTENT)));
   }
 
-  @ApiOperation(value = "Delete a family by id student", response = Mono.class)
-  @DeleteMapping("/student/{idStudent}")
-  public Mono<ResponseEntity<Void>> deleteByStudent(@PathVariable String idStudent){
-    return familyService.deleteByIdStudent(idStudent)
+  @ApiOperation(value = "Delete a family by id partner", response = Mono.class)
+  @DeleteMapping("/partner/{idPartner}")
+  public Mono<ResponseEntity<Void>> deleteByPartner(@PathVariable String idPartner){
+    return familyService.deleteByIdPartner(idPartner)
             .flatMap(p -> Mono.just(new ResponseEntity<Void>(HttpStatus.NO_CONTENT)));
   }
 

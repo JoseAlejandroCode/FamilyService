@@ -28,7 +28,7 @@ public class Family {
   private String relationship;
   @NotEmpty
   @NotNull
-  private String idStudent;
+  private String idPartner;
 
   public Family() {
   }
@@ -98,11 +98,11 @@ public class Family {
     this.relationship = relationship;
   }
 
-  public String getIdStudent() {
-    return idStudent;
+  public String getIdPartner() {
+    return idPartner;
   }
 
-  public void setIdStudent(String idStudent) {
-    this.idStudent = idStudent;
+  public void setIdPartner(String idPartner) {
+    this.idPartner = idPartner;
   }
 }

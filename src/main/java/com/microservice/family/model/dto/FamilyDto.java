@@ -4,16 +4,16 @@ import javax.validation.constraints.NotEmpty;
 
 public class FamilyDto extends PersonDto {
 
-  private String idStudent;
+  private String idPartner;
   @NotEmpty
   private String relationship;
 
-  public String getIdStudent() {
-    return idStudent;
+  public String getIdPartner() {
+    return idPartner;
   }
 
-  public void setIdStudent(String idStudent) {
-    this.idStudent = idStudent;
+  public void setIdPartner(String idPartner) {
+    this.idPartner = idPartner;
   }
 
   public String getRelationship() {

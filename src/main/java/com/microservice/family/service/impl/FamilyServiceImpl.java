@@ -31,8 +31,8 @@ public class FamilyServiceImpl implements FamilyService {
   }
 
   @Override
-  public Flux<FamilyDto> findByIdStudent(String idStudent) {
-    return familyRepository.findByIdStudent(idStudent)
+  public Flux<FamilyDto> findByIdPartner(String idPartner) {
+    return familyRepository.findByIdPartner(idPartner)
             .flatMap(family -> Mono.just(familyConverter.convertToDto(family)));
   }
 
@@ -61,8 +61,8 @@ public class FamilyServiceImpl implements FamilyService {
   }
 
   @Override
-  public Mono<Void> deleteByIdStudent(String idStudent) {
-    return findByIdStudent(idStudent)
+  public Mono<Void> deleteByIdPartner(String idPartner) {
+    return findByIdPartner(idPartner)
             .flatMap(f -> delete(f.getId()))
             .next();
   }

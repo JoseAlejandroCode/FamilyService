@@ -7,9 +7,9 @@ import reactor.core.publisher.Mono;
 public interface FamilyService {
   Flux<FamilyDto> findAll();
   Mono<FamilyDto> findById(String id);
-  Flux<FamilyDto> findByIdStudent(String idStudent);
+  Flux<FamilyDto> findByIdPartner(String idPartner);
   Mono<FamilyDto> create(FamilyDto family);
   Mono<FamilyDto> update(FamilyDto family, String id);
   Mono<Void> delete(String id);
-  Mono<Void> deleteByIdStudent(String idStudent);
+  Mono<Void> deleteByIdPartner(String idPartner);
 }
