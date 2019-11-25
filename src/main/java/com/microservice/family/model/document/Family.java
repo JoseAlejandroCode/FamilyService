@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 
 @Document(collection = "family")
 public class Family {
@@ -26,9 +27,8 @@ public class Family {
   private Date birthdate;
   @NotEmpty
   private String relationship;
-  @NotEmpty
-  @NotNull
-  private String idPartner;
+
+  private List<String> partnerList;
 
   public Family() {
   }
@@ -98,11 +98,15 @@ public class Family {
     this.relationship = relationship;
   }
 
-  public String getIdPartner() {
-    return idPartner;
+  public List<String> getPartnerList() {
+    return partnerList;
   }
 
-  public void setIdPartner(String idPartner) {
-    this.idPartner = idPartner;
+  public void setPartnerList(List<String> partnerList) {
+    this.partnerList = partnerList;
+  }
+
+  public void addPartner(String partner) {
+    this.partnerList.add(partner);
   }
 }

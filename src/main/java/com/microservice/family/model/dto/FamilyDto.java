@@ -1,20 +1,13 @@
 package com.microservice.family.model.dto;
 
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 public class FamilyDto extends PersonDto {
 
-  private String idPartner;
+  private List<PartnerDto> partnerList;
   @NotEmpty
   private String relationship;
-
-  public String getIdPartner() {
-    return idPartner;
-  }
-
-  public void setIdPartner(String idPartner) {
-    this.idPartner = idPartner;
-  }
 
   public String getRelationship() {
     return relationship;
@@ -22,5 +15,17 @@ public class FamilyDto extends PersonDto {
 
   public void setRelationship(String relationship) {
     this.relationship = relationship;
+  }
+
+  public List<PartnerDto> getPartnerList() {
+    return partnerList;
+  }
+
+  public void setPartnerList(List<PartnerDto> partnerList) {
+    this.partnerList = partnerList;
+  }
+
+  public void addPartner(PartnerDto partner) {
+    this.partnerList.add(partner);
   }
 }

@@ -6,5 +6,5 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface FamilyRepository extends ReactiveMongoRepository<Family, String> {
-  Flux<Family> findByIdPartner(String idPartner);
+  Flux<Family> findByPartnerListIn(String idPartner);
 }
