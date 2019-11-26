@@ -8,7 +8,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Configuration
 public class ServiceConfig {
 
-  @Value("${config.base.student.uri}")
+  @Value("${config.base.service.uri}")
   private String pathStudent;
 
   @Bean
