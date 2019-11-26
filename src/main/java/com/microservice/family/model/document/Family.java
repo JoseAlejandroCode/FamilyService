@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -31,6 +32,7 @@ public class Family {
   private List<String> partnerList;
 
   public Family() {
+    partnerList = new ArrayList<>();
   }
 
   public Family(String fullName, String typeDocument, String numberDocument, Boolean gender, Date birthdate, String relationship) {

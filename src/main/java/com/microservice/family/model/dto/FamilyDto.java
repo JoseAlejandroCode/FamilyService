@@ -1,6 +1,7 @@
 package com.microservice.family.model.dto;
 
 import javax.validation.constraints.NotEmpty;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FamilyDto extends PersonDto {
@@ -8,6 +9,11 @@ public class FamilyDto extends PersonDto {
   private List<PartnerDto> partnerList;
   @NotEmpty
   private String relationship;
+
+  public FamilyDto() {
+    super();
+    partnerList = new ArrayList<>();
+  }
 
   public String getRelationship() {
     return relationship;
