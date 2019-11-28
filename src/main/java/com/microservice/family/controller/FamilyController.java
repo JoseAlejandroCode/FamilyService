@@ -76,4 +76,11 @@ public class FamilyController {
             .flatMap(p -> Mono.just(new ResponseEntity<Void>(HttpStatus.NO_CONTENT)));
   }
 
+  @GetMapping("/institute/{idInstitute}")
+  public Mono<ResponseEntity<Flux<FamilyDto>>> findByIdInstitute(@PathVariable String idInstitute)  {
+    return Mono.just(ResponseEntity
+            .ok().contentType(MediaType.APPLICATION_JSON)
+            .body(familyService.findByIdInstitute(idInstitute)));
+  }
+
 }

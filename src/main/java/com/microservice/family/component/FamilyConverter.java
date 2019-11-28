@@ -27,6 +27,7 @@ public class FamilyConverter {
     family.setGender(familyDto.getGender());
     family.setBirthdate(familyDto.getBirthdate());
     family.setRelationship(familyDto.getRelationship());
+    family.setIdInstitute(familyDto.getInstitute().getId());
     familyDto.getPartnerList().forEach(f -> family.addPartner(f.getId()));
     return family;
   }

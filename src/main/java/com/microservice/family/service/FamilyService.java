@@ -12,4 +12,5 @@ public interface FamilyService {
   Mono<FamilyDto> update(FamilyDto family, String id);
   Mono<Void> delete(String id);
   Mono<Void> deleteByIdPartner(String idPartner);
+  Flux<FamilyDto> findByIdInstitute(String idInstitute);
 }

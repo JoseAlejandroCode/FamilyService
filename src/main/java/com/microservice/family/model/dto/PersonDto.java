@@ -1,5 +1,6 @@
 package com.microservice.family.model.dto;
 
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotEmpty;
@@ -9,18 +10,37 @@ import java.util.Date;
 
 abstract class PersonDto implements Serializable {
   private String id;
-  @NotEmpty
+
+  @ApiModelProperty(value = "Fullname", required = true)
+  @NotEmpty(message = "Name is required field")
   private String fullName;
-  @NotEmpty
+
+  @ApiModelProperty(value = "Type document", required = true)
+  @NotEmpty(message = "Type document is required field")
   private String typeDocument;
-  @NotEmpty
+
+  @ApiModelProperty(value = "Number document", required = true)
+  @NotEmpty(message = "Number document is required field")
   private String numberDocument;
-  @NotNull
+
+  @ApiModelProperty(value = "Gender", required = true)
+  @NotNull(message = "Gender is required field")
   private Boolean gender;
-  @NotNull
+
+  @ApiModelProperty(value = "Birthdate", required = true)
+  @NotNull(message = "Birthdate is required field")
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   private Date birthdate;
 
+  private InstituteDto institute;
+
+  public InstituteDto getInstitute() {
+    return institute;
+  }
+
+  public void setInstitute(InstituteDto institute) {
+    this.institute = institute;
+  }
   public String getId() {
     return id;
   }

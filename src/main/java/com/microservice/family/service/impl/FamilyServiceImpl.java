@@ -70,4 +70,10 @@ public class FamilyServiceImpl implements FamilyService {
             })
             .then();
   }
+
+  @Override
+  public Flux<FamilyDto> findByIdInstitute(String idInstitute) {
+    return familyRepository.findByIdInstitute(idInstitute)
+            .flatMap(family -> Mono.just(familyConverter.convertToDto(family)));
+  }
 }

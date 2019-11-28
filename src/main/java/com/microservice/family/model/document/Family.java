@@ -31,6 +31,16 @@ public class Family {
 
   private List<String> partnerList;
 
+  private String idInstitute;
+
+  public String getIdInstitute() {
+    return idInstitute;
+  }
+
+  public void setIdInstitute(String idInstitute) {
+    this.idInstitute = idInstitute;
+  }
+
   public Family() {
     partnerList = new ArrayList<>();
   }
